@@ -1,20 +1,38 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Message from "../../../components/Message";
 import useRequestData from "../../../hooks/useRequestData";
 
+import Quill from "quill";
+import "quill/dist/quill.snow.css";
 const CreateRecipe = () => {
   const { makeRequest, isLoading, data, error } = useRequestData();
+
+  // reference til brug for quill
+  const refQuillContainer = useRef();
+  const refQuill = useRef();
+  // options for quill
+  const quillOptions = {
+    theme: "snow",
+  };
+
+  useEffect(() => {
+    if (!refQuill.current) {
+      refQuill.current = new Quill(refQuillContainer.current, quillOptions);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    makeRequest(
-      "http://127.0.0.1:5020/api/coffeerecipes",
-      "POST",
-      e.target
-    ).then(() => {
-      e.target.reset();
-    });
+    let fd = new FormData(e.target);
+    fd.append("description", refQuill.current.getSemanticHTML());
+
+    makeRequest("http://127.0.0.1:5020/api/coffeerecipes", "POST", fd).then(
+      () => {
+        e.target.reset();
+        refQuill.current.setText("");
+      }
+    );
   };
 
   return (
@@ -41,12 +59,13 @@ const CreateRecipe = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="font-medium">Description</label>
+          {/* <label className="font-medium">Description</label>
           <textarea
             name="description"
             placeholder="Description"
             className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+          /> */}
+          <div ref={refQuillContainer}></div>
         </div>
 
         <div className="flex flex-col">
