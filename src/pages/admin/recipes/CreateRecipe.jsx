@@ -25,7 +25,10 @@ const CreateRecipe = () => {
     e.preventDefault();
 
     let fd = new FormData(e.target);
-    fd.append("description", refQuill.current.getSemanticHTML());
+    fd.append(
+      "description",
+      refQuill.current.getSemanticHTML().replace(/&nbsp;/g, " ")
+    );
 
     makeRequest("http://127.0.0.1:5020/api/coffeerecipes", "POST", fd).then(
       () => {

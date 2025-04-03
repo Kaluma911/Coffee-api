@@ -2,6 +2,7 @@ import React from "react";
 import { FaHome, FaInfoCircle, FaUtensils } from "react-icons/fa";
 import { MdEvent } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import LogoutButton from "../../components/LogoutButton";
 
 const AdminNavbar = () => {
   return (
@@ -13,6 +14,7 @@ const AdminNavbar = () => {
             <NavLink
               reloadDocument
               to="/admin"
+              end
               className={({ isActive }) =>
                 `flex items-center gap-2 p-3 rounded-lg hover:bg-gray-700 transition ${
                   isActive ? "bg-gray-700" : ""
@@ -25,7 +27,7 @@ const AdminNavbar = () => {
           <li>
             <NavLink
               reloadDocument
-              to="/createrecipe"
+              to="/admin/createrecipe"
               className={({ isActive }) =>
                 `flex items-center gap-2 p-3 rounded-lg hover:bg-gray-700 transition ${
                   isActive ? "bg-gray-700" : ""
@@ -38,7 +40,7 @@ const AdminNavbar = () => {
           <li>
             <NavLink
               reloadDocument
-              to="/createrecipe"
+              to="/admin/createevent"
               className={({ isActive }) =>
                 `flex items-center gap-2 p-3 rounded-lg hover:bg-gray-700 transition ${
                   isActive ? "bg-gray-700" : ""
@@ -60,6 +62,11 @@ const AdminNavbar = () => {
             >
               <FaInfoCircle /> About
             </NavLink>
+          </li>
+          <li>
+            <div>
+              <LogoutButton />
+            </div>
           </li>
         </ul>
       </nav>

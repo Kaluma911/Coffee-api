@@ -35,7 +35,7 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="text-end">
-          <NavLink reloadDocument to={"/login"}>
+          <NavLink reloadDocument to={"/admin"}>
             Login
           </NavLink>
         </div>

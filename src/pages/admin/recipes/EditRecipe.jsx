@@ -34,11 +34,12 @@ const EditRecipe = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    makeRequestPut(
-      `http://127.0.0.1:5020/api/coffeerecipes/${id}`,
-      "PUT",
-      e.target
+    let fd = new FormData(e.target);
+    fd.append(
+      "desription",
+      refQuill.current.getSemanticHTML().replace(/&nbsp;/g, " ")
     );
+    makeRequestPut(`http://127.0.0.1:5020/api/coffeerecipes/${id}`, "PUT", fd);
   };
 
   return (

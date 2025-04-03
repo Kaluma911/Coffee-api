@@ -11,8 +11,10 @@ import PrivatRoute from "./layout/admin/PrivatRoute";
 import Layout from "./layout/Layout";
 import About from "./pages/About";
 import AdminHome from "./pages/admin/AdminHome";
+import CreateEvent from "./pages/admin/events/CreateEvent";
 import EditEvent from "./pages/admin/events/EditEvent";
 import Login from "./pages/admin/Login";
+import CreateRecipe from "./pages/admin/recipes/CreateRecipe";
 import EditRecipe from "./pages/admin/recipes/EditRecipe";
 import Events from "./pages/events/Events";
 import Home from "./pages/Home";
@@ -32,8 +34,6 @@ function App() {
         { path: "recipes", element: <Recipes /> },
         { path: "events", element: <Events /> },
         { path: "recipesearch/:searchkey", element: <RecipesSearch /> },
-        { path: "admin/editrecipe/:id", element: <EditRecipe /> },
-        { path: "admin/editevent/:id", element: <EditEvent /> },
       ],
     },
     {
@@ -46,6 +46,10 @@ function App() {
       children: [
         /*------------------- Admin -------------------*/
         { path: "admin", element: <AdminHome /> },
+        { path: "admin/createevent", element: <CreateEvent /> },
+        { path: "admin/createrecipe", element: <CreateRecipe /> },
+        { path: "admin/editrecipe/:id", element: <EditRecipe /> },
+        { path: "admin/editevent/:id", element: <EditEvent /> },
       ],
     },
     {

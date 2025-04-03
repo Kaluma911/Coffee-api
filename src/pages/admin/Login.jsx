@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
-import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [password, setPassword] = useState("");
@@ -16,12 +16,17 @@ function Login() {
   };
 
   return (
-    <div className="bg-slate-600 min-h-screen justify-center flex items-center">
-      <div className="p-8 rounded-lg shadow-lg max-w-sm w-full">
-        <h2 className="text-2x1 font-semibold text-center mb-6">Admin Login</h2>
+    <div className="bg-slate-800 min-h-screen flex items-center justify-center">
+      <div className="p-8 bg-white rounded-lg shadow-lg max-w-sm w-full">
+        <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
+          Admin Login
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="password" className="block text-sm font-medium">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
               Password
             </label>
             <input
@@ -34,9 +39,16 @@ function Login() {
               className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
+          <NavLink
+            reloadDocument
+            to="/"
+            className="block text-center w-full py-2 px-4 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 mb-4"
+          >
+            Go Back Home
+          </NavLink>
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             Login
           </button>

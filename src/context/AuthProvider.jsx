@@ -3,12 +3,15 @@ import React, { createContext, useContext, useState } from "react";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem("isAuthenticated") === "true";
+  });
 
   const login = (password) => {
     console.log("login called with:", password);
     if (password === "admin123") {
       setIsAuthenticated(true);
+      localStorage.setItem("isAuthenticated", "true");
       return true;
     } else {
       alert("Incorrect password");
@@ -18,6 +21,7 @@ export function AuthProvider({ children }) {
 
   const logout = () => {
     setIsAuthenticated(false);
+    localStorage.removeItem("isAuthenticated");
   };
 
   return (
