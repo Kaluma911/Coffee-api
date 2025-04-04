@@ -7,6 +7,7 @@ export function AuthProvider({ children }) {
     return localStorage.getItem("isAuthenticated") === "true";
   });
 
+  //kunne bruge sessionStorage
   const login = (password) => {
     console.log("login called with:", password);
     if (password === "admin123") {
