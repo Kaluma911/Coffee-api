@@ -96,4 +96,6 @@ jeg har valgt at bruge **Javascript** over **_typeskript_**, da mine kompetancer
 
 ## URL, Username, Passwords
 
+admin password: admin123
+
 ## Github
